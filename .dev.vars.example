@@ -1,0 +1,2 @@
+# Local-only mock account used by scripts/vite/sites-vite-plugin.ts
+MEDIA_ADMIN_USER_IDS=local_seedy

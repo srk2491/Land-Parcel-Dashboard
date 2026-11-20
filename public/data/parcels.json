@@ -1,0 +1,1788 @@
+{
+  "sourceTitle": "Land details, 20 November 2026",
+  "sourcePdf": "source/land-details-20-11-2026.pdf",
+  "scope": {
+    "includedRows": "1-79",
+    "excludedRows": "80-103",
+    "excludedSection": "ಉಳಿಕೆ",
+    "note": "The dashboard follows the primary register subtotal for rows 1-79. Rows 80-103 appear under the separate PDF section ಉಳಿಕೆ (remaining) and are excluded."
+  },
+  "units": {
+    "guntasPerAcre": 40
+  },
+  "summary": {
+    "parcelCount": 79,
+    "rawAcres": 479,
+    "rawGuntas": 714,
+    "normalizedAcres": 496,
+    "normalizedGuntas": 34,
+    "statusTotals": {
+      "available": {
+        "label": "Available at site",
+        "parcelCount": 41,
+        "acres": 197,
+        "guntas": 406,
+        "normalizedAcres": 207,
+        "normalizedGuntas": 6
+      },
+      "dispute": {
+        "label": "Land dispute / court record",
+        "parcelCount": 13,
+        "acres": 99,
+        "guntas": 73,
+        "normalizedAcres": 100,
+        "normalizedGuntas": 33
+      },
+      "encroachment": {
+        "label": "Encroachment",
+        "parcelCount": 4,
+        "acres": 24,
+        "guntas": 20,
+        "normalizedAcres": 24,
+        "normalizedGuntas": 20
+      },
+      "no_approach_road": {
+        "label": "No approach road",
+        "parcelCount": 3,
+        "acres": 3,
+        "guntas": 42,
+        "normalizedAcres": 4,
+        "normalizedGuntas": 2
+      },
+      "nala_or_pit": {
+        "label": "Nala / pit area",
+        "parcelCount": 0,
+        "acres": 0,
+        "guntas": 0,
+        "normalizedAcres": 0,
+        "normalizedGuntas": 0
+      },
+      "hill_or_rocky": {
+        "label": "Hill / rocky area",
+        "parcelCount": 11,
+        "acres": 106,
+        "guntas": 150,
+        "normalizedAcres": 109,
+        "normalizedGuntas": 30
+      },
+      "survey_or_resurvey": {
+        "label": "Survey / re-survey",
+        "parcelCount": 6,
+        "acres": 39,
+        "guntas": 63,
+        "normalizedAcres": 40,
+        "normalizedGuntas": 23
+      },
+      "ashraya_scheme": {
+        "label": "Ashraya scheme",
+        "parcelCount": 2,
+        "acres": 3,
+        "guntas": 0,
+        "normalizedAcres": 3,
+        "normalizedGuntas": 0
+      }
+    },
+    "coordinateCount": 0
+  },
+  "statusCategories": [
+    {
+      "key": "available",
+      "label": "Available at site"
+    },
+    {
+      "key": "dispute",
+      "label": "Land dispute / court record"
+    },
+    {
+      "key": "encroachment",
+      "label": "Encroachment"
+    },
+    {
+      "key": "no_approach_road",
+      "label": "No approach road"
+    },
+    {
+      "key": "nala_or_pit",
+      "label": "Nala / pit area"
+    },
+    {
+      "key": "hill_or_rocky",
+      "label": "Hill / rocky area"
+    },
+    {
+      "key": "survey_or_resurvey",
+      "label": "Survey / re-survey"
+    },
+    {
+      "key": "ashraya_scheme",
+      "label": "Ashraya scheme"
+    }
+  ],
+  "parcels": [
+    {
+      "id": 1,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Hegondanahalli",
+      "surveyNo": "37",
+      "areaAcres": 4,
+      "areaGuntas": 2,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 4,
+          "guntas": 2
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-001.jpg",
+      "sourceRow": "assets/source-rows/parcel-001.jpg"
+    },
+    {
+      "id": 2,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Hegondanahalli",
+      "surveyNo": "4",
+      "areaAcres": 3,
+      "areaGuntas": 5,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 3,
+          "guntas": 5
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-002.jpg",
+      "sourceRow": "assets/source-rows/parcel-002.jpg"
+    },
+    {
+      "id": 3,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Chambenahalli",
+      "surveyNo": "147",
+      "areaAcres": 4,
+      "areaGuntas": 32,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 4,
+          "guntas": 32
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-003.jpg",
+      "sourceRow": "assets/source-rows/parcel-003.jpg"
+    },
+    {
+      "id": 4,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Kade Agrahara",
+      "surveyNo": "30",
+      "areaAcres": 3,
+      "areaGuntas": 15,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 3,
+          "guntas": 15
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-004.jpg",
+      "sourceRow": "assets/source-rows/parcel-004.jpg"
+    },
+    {
+      "id": 5,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Kommasandra",
+      "surveyNo": "62",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-005.jpg",
+      "sourceRow": "assets/source-rows/parcel-005.jpg"
+    },
+    {
+      "id": 6,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Biskanhalli",
+      "surveyNo": "18",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "ashraya_scheme",
+          "label": "Ashraya scheme",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-006.jpg",
+      "sourceRow": "assets/source-rows/parcel-006.jpg"
+    },
+    {
+      "id": 7,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "S. Bhangipura",
+      "surveyNo": "154",
+      "areaAcres": 8,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 8,
+          "guntas": 0
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-007.jpg",
+      "sourceRow": "assets/source-rows/parcel-007.jpg"
+    },
+    {
+      "id": 8,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Hullalli",
+      "surveyNo": "186",
+      "areaAcres": 1,
+      "areaGuntas": 37,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 37
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-008.jpg",
+      "sourceRow": "assets/source-rows/parcel-008.jpg"
+    },
+    {
+      "id": 9,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "S. Bhangipura",
+      "surveyNo": "179",
+      "areaAcres": 5,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 5,
+          "guntas": 0
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-009.jpg",
+      "sourceRow": "assets/source-rows/parcel-009.jpg"
+    },
+    {
+      "id": 10,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Vabasandra",
+      "surveyNo": "12",
+      "areaAcres": 3,
+      "areaGuntas": 7,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 3,
+          "guntas": 7
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-010.jpg",
+      "sourceRow": "assets/source-rows/parcel-010.jpg"
+    },
+    {
+      "id": 11,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Vabasandra",
+      "surveyNo": "39",
+      "areaAcres": 0,
+      "areaGuntas": 27,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 0,
+          "guntas": 27
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-011.jpg",
+      "sourceRow": "assets/source-rows/parcel-011.jpg"
+    },
+    {
+      "id": 12,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Mahantalingapura",
+      "surveyNo": "47",
+      "areaAcres": 7,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 7,
+          "guntas": 0
+        }
+      ],
+      "page": 1,
+      "photo": "assets/photos/parcel-012.jpg",
+      "sourceRow": "assets/source-rows/parcel-012.jpg"
+    },
+    {
+      "id": 13,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Mahantalingapura",
+      "surveyNo": "48",
+      "areaAcres": 8,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 8,
+          "guntas": 0
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-013.jpg",
+      "sourceRow": "assets/source-rows/parcel-013.jpg"
+    },
+    {
+      "id": 14,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Kallubalu",
+      "surveyNo": "90",
+      "areaAcres": 6,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 6,
+          "guntas": 0
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-014.jpg",
+      "sourceRow": "assets/source-rows/parcel-014.jpg"
+    },
+    {
+      "id": 15,
+      "constituency": "Anekal",
+      "taluk": "Bengaluru South",
+      "hobli": "Sarjapura",
+      "village": "Yavare",
+      "surveyNo": "88",
+      "areaAcres": 5,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 5,
+          "guntas": 0
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-015.jpg",
+      "sourceRow": "assets/source-rows/parcel-015.jpg"
+    },
+    {
+      "id": 16,
+      "constituency": "Anekal",
+      "taluk": "Bengaluru South",
+      "hobli": "Sarjapura",
+      "village": "Yavare",
+      "surveyNo": "195",
+      "areaAcres": 5,
+      "areaGuntas": 12,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 5,
+          "guntas": 12
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-016.jpg",
+      "sourceRow": "assets/source-rows/parcel-016.jpg"
+    },
+    {
+      "id": 17,
+      "constituency": "Anekal",
+      "taluk": "Bengaluru South",
+      "hobli": "Not shown",
+      "village": "Kudurgere",
+      "surveyNo": "148",
+      "areaAcres": 2,
+      "areaGuntas": 27,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 27
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-017.jpg",
+      "sourceRow": "assets/source-rows/parcel-017.jpg"
+    },
+    {
+      "id": 18,
+      "constituency": "Anekal",
+      "taluk": "Bengaluru South",
+      "hobli": "Not shown",
+      "village": "Rayasandra",
+      "surveyNo": "121",
+      "areaAcres": 1,
+      "areaGuntas": 24,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 24
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-018.jpg",
+      "sourceRow": "assets/source-rows/parcel-018.jpg"
+    },
+    {
+      "id": 19,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Bannerghatta",
+      "surveyNo": "2 2",
+      "areaAcres": 7,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 7,
+          "guntas": 0
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-019.jpg",
+      "sourceRow": "assets/source-rows/parcel-019.jpg"
+    },
+    {
+      "id": 20,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Jigani",
+      "village": "Shivanahalli",
+      "surveyNo": "172",
+      "areaAcres": 3,
+      "areaGuntas": 5,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 3,
+          "guntas": 5
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-020.jpg",
+      "sourceRow": "assets/source-rows/parcel-020.jpg"
+    },
+    {
+      "id": 21,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Kasaba",
+      "village": "Kumbaranahalli",
+      "surveyNo": "19",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-021.jpg",
+      "sourceRow": "assets/source-rows/parcel-021.jpg"
+    },
+    {
+      "id": 22,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Kasaba",
+      "village": "Soppahalli",
+      "surveyNo": "36",
+      "areaAcres": 1,
+      "areaGuntas": 36,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 36
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-022.jpg",
+      "sourceRow": "assets/source-rows/parcel-022.jpg"
+    },
+    {
+      "id": 23,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Kasaba",
+      "village": "Maneginahalli",
+      "surveyNo": "145",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-023.jpg",
+      "sourceRow": "assets/source-rows/parcel-023.jpg"
+    },
+    {
+      "id": 24,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Kasaba",
+      "village": "Guddanahalli",
+      "surveyNo": "93",
+      "areaAcres": 0,
+      "areaGuntas": 39,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 0,
+          "guntas": 39
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-024.jpg",
+      "sourceRow": "assets/source-rows/parcel-024.jpg"
+    },
+    {
+      "id": 25,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Kasaba",
+      "village": "Haladenahalli",
+      "surveyNo": "83",
+      "areaAcres": 1,
+      "areaGuntas": 2,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 2
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-025.jpg",
+      "sourceRow": "assets/source-rows/parcel-025.jpg"
+    },
+    {
+      "id": 26,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Kasaba",
+      "village": "Aravantigipura",
+      "surveyNo": "47",
+      "areaAcres": 3,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 3,
+          "guntas": 0
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-026.jpg",
+      "sourceRow": "assets/source-rows/parcel-026.jpg"
+    },
+    {
+      "id": 27,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Attibele",
+      "village": "Halahalli",
+      "surveyNo": "95",
+      "areaAcres": 1,
+      "areaGuntas": 5,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 5
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-027.jpg",
+      "sourceRow": "assets/source-rows/parcel-027.jpg"
+    },
+    {
+      "id": 28,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Attibele",
+      "village": "Bhaktipura",
+      "surveyNo": "58",
+      "areaAcres": 2,
+      "areaGuntas": 18,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 18
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-028.jpg",
+      "sourceRow": "assets/source-rows/parcel-028.jpg"
+    },
+    {
+      "id": 29,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Ramanayakanahalli",
+      "surveyNo": "29",
+      "areaAcres": 1,
+      "areaGuntas": 14,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 14
+        }
+      ],
+      "page": 2,
+      "photo": "assets/photos/parcel-029.jpg",
+      "sourceRow": "assets/source-rows/parcel-029.jpg"
+    },
+    {
+      "id": 30,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Kotaganahalli",
+      "surveyNo": "67",
+      "areaAcres": 15,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 15,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-030.jpg",
+      "sourceRow": "assets/source-rows/parcel-030.jpg"
+    },
+    {
+      "id": 31,
+      "constituency": "Anekal",
+      "taluk": "Anekal",
+      "hobli": "Sarjapura",
+      "village": "Kotaganahalli",
+      "surveyNo": "68",
+      "areaAcres": 5,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 5,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-031.jpg",
+      "sourceRow": "assets/source-rows/parcel-031.jpg"
+    },
+    {
+      "id": 32,
+      "constituency": "Bengaluru South",
+      "taluk": "Bengaluru South",
+      "hobli": "Begur",
+      "village": "Vittasandra",
+      "surveyNo": "102",
+      "areaAcres": 13,
+      "areaGuntas": 11,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 13,
+          "guntas": 11
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-032.jpg",
+      "sourceRow": "assets/source-rows/parcel-032.jpg"
+    },
+    {
+      "id": 33,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Tavarekere",
+      "village": "Muddayyanapalya",
+      "surveyNo": "28",
+      "areaAcres": 60,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 58,
+          "guntas": 13
+        },
+        {
+          "key": "survey_or_resurvey",
+          "label": "Survey / re-survey",
+          "acres": 1,
+          "guntas": 17
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-033.jpg",
+      "sourceRow": "assets/source-rows/parcel-033.jpg"
+    },
+    {
+      "id": 34,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Tavarekere",
+      "village": "Banchanakuppe",
+      "surveyNo": "43",
+      "areaAcres": 15,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 15,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-034.jpg",
+      "sourceRow": "assets/source-rows/parcel-034.jpg"
+    },
+    {
+      "id": 35,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Tavarekere",
+      "village": "Banchanakuppe",
+      "surveyNo": "43",
+      "areaAcres": 9,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "survey_or_resurvey",
+          "label": "Survey / re-survey",
+          "acres": 9,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-035.jpg",
+      "sourceRow": "assets/source-rows/parcel-035.jpg"
+    },
+    {
+      "id": 36,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Kengeri",
+      "village": "Kumbalgodu",
+      "surveyNo": "98",
+      "areaAcres": 1,
+      "areaGuntas": 20,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 20
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-036.jpg",
+      "sourceRow": "assets/source-rows/parcel-036.jpg"
+    },
+    {
+      "id": 37,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Kengeri",
+      "village": "Maligondanahalli",
+      "surveyNo": "20",
+      "areaAcres": 10,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 10,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-037.jpg",
+      "sourceRow": "assets/source-rows/parcel-037.jpg"
+    },
+    {
+      "id": 38,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Uttarahalli",
+      "village": "Arehalli",
+      "surveyNo": "28",
+      "areaAcres": 17,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "encroachment",
+          "label": "Encroachment",
+          "acres": 13,
+          "guntas": 10
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-038.jpg",
+      "sourceRow": "assets/source-rows/parcel-038.jpg"
+    },
+    {
+      "id": 39,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Uttarahalli",
+      "village": "Nelaguli",
+      "surveyNo": "145",
+      "areaAcres": 22,
+      "areaGuntas": 16,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 22,
+          "guntas": 16
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-039.jpg",
+      "sourceRow": "assets/source-rows/parcel-039.jpg"
+    },
+    {
+      "id": 40,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Uttarahalli",
+      "village": "Vaddarahalli",
+      "surveyNo": "38",
+      "areaAcres": 19,
+      "areaGuntas": 22,
+      "statusExtents": [
+        {
+          "key": "survey_or_resurvey",
+          "label": "Survey / re-survey",
+          "acres": 19,
+          "guntas": 22
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-040.jpg",
+      "sourceRow": "assets/source-rows/parcel-040.jpg"
+    },
+    {
+      "id": 41,
+      "constituency": "Yeshwanthpur",
+      "taluk": "Bengaluru South",
+      "hobli": "Uttarahalli",
+      "village": "Sankadakatte",
+      "surveyNo": "53",
+      "areaAcres": 3,
+      "areaGuntas": 10,
+      "statusExtents": [
+        {
+          "key": "survey_or_resurvey",
+          "label": "Survey / re-survey",
+          "acres": 3,
+          "guntas": 10
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-041.jpg",
+      "sourceRow": "assets/source-rows/parcel-041.jpg"
+    },
+    {
+      "id": 42,
+      "constituency": "Mahadevapura",
+      "taluk": "Bengaluru East",
+      "hobli": "Bidarahalli",
+      "village": "Kada Agrahara",
+      "surveyNo": "78",
+      "areaAcres": 7,
+      "areaGuntas": 3,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 7,
+          "guntas": 3
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-042.jpg",
+      "sourceRow": "assets/source-rows/parcel-042.jpg"
+    },
+    {
+      "id": 43,
+      "constituency": "Krishnarajapuram",
+      "taluk": "Bengaluru East",
+      "hobli": "Bidarahalli",
+      "village": "Kannuru",
+      "surveyNo": "50",
+      "areaAcres": 8,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "survey_or_resurvey",
+          "label": "Survey / re-survey",
+          "acres": 5,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-043.jpg",
+      "sourceRow": "assets/source-rows/parcel-043.jpg"
+    },
+    {
+      "id": 44,
+      "constituency": "Krishnarajapuram",
+      "taluk": "Bengaluru East",
+      "hobli": "Krishnarajapuram",
+      "village": "Horamavu",
+      "surveyNo": "110",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-044.jpg",
+      "sourceRow": "assets/source-rows/parcel-044.jpg"
+    },
+    {
+      "id": 45,
+      "constituency": "Krishnarajapuram",
+      "taluk": "Bengaluru East",
+      "hobli": "Krishnarajapuram",
+      "village": "K. Narayanapura",
+      "surveyNo": "49",
+      "areaAcres": 1,
+      "areaGuntas": 6,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 6
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-045.jpg",
+      "sourceRow": "assets/source-rows/parcel-045.jpg"
+    },
+    {
+      "id": 46,
+      "constituency": "Krishnarajapuram",
+      "taluk": "Bengaluru East",
+      "hobli": "Krishnarajapuram",
+      "village": "Devasandra",
+      "surveyNo": "34",
+      "areaAcres": 0,
+      "areaGuntas": 20,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 0,
+          "guntas": 20
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-046.jpg",
+      "sourceRow": "assets/source-rows/parcel-046.jpg"
+    },
+    {
+      "id": 47,
+      "constituency": "Krishnarajapuram",
+      "taluk": "Bengaluru East",
+      "hobli": "Krishnarajapuram",
+      "village": "Nimbakayipura",
+      "surveyNo": "52 U/75",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 3,
+      "photo": "assets/photos/parcel-047.jpg",
+      "sourceRow": "assets/source-rows/parcel-047.jpg"
+    },
+    {
+      "id": 48,
+      "constituency": "Krishnarajapuram",
+      "taluk": "Bengaluru East",
+      "hobli": "Krishnarajapuram",
+      "village": "Kithaganur",
+      "surveyNo": "81",
+      "areaAcres": 2,
+      "areaGuntas": 14,
+      "statusExtents": [
+        {
+          "key": "survey_or_resurvey",
+          "label": "Survey / re-survey",
+          "acres": 2,
+          "guntas": 14
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-048.jpg",
+      "sourceRow": "assets/source-rows/parcel-048.jpg"
+    },
+    {
+      "id": 49,
+      "constituency": "Mahadevapura",
+      "taluk": "Bengaluru East",
+      "hobli": "Krishnarajapuram",
+      "village": "Kodigehalli",
+      "surveyNo": "34",
+      "areaAcres": 7,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 7,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-049.jpg",
+      "sourceRow": "assets/source-rows/parcel-049.jpg"
+    },
+    {
+      "id": 50,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Mahadev Kodigehalli",
+      "surveyNo": "119/P5",
+      "areaAcres": 4,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 4,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-050.jpg",
+      "sourceRow": "assets/source-rows/parcel-050.jpg"
+    },
+    {
+      "id": 51,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Kadiganahalli",
+      "surveyNo": "33",
+      "areaAcres": 11,
+      "areaGuntas": 30,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 11,
+          "guntas": 30
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-051.jpg",
+      "sourceRow": "assets/source-rows/parcel-051.jpg"
+    },
+    {
+      "id": 52,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Chikka Jala",
+      "surveyNo": "76/P7",
+      "areaAcres": 4,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 4,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-052.jpg",
+      "sourceRow": "assets/source-rows/parcel-052.jpg"
+    },
+    {
+      "id": 53,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Chikka Jala",
+      "surveyNo": "76/4",
+      "areaAcres": 1,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 1,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-053.jpg",
+      "sourceRow": "assets/source-rows/parcel-053.jpg"
+    },
+    {
+      "id": 54,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Byanasahalli",
+      "surveyNo": "31 31",
+      "areaAcres": 0,
+      "areaGuntas": 14,
+      "statusExtents": [
+        {
+          "key": "no_approach_road",
+          "label": "No approach road",
+          "acres": 0,
+          "guntas": 14
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-054.jpg",
+      "sourceRow": "assets/source-rows/parcel-054.jpg"
+    },
+    {
+      "id": 55,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Bayyappanahalli",
+      "surveyNo": "80",
+      "areaAcres": 3,
+      "areaGuntas": 20,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 3,
+          "guntas": 20
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-055.jpg",
+      "sourceRow": "assets/source-rows/parcel-055.jpg"
+    },
+    {
+      "id": 56,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Nallur Kunte",
+      "surveyNo": "82",
+      "areaAcres": 3,
+      "areaGuntas": 1,
+      "statusExtents": [
+        {
+          "key": "no_approach_road",
+          "label": "No approach road",
+          "acres": 3,
+          "guntas": 1
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-056.jpg",
+      "sourceRow": "assets/source-rows/parcel-056.jpg"
+    },
+    {
+      "id": 57,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Hunasemaranahalli",
+      "surveyNo": "1",
+      "areaAcres": 1,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "ashraya_scheme",
+          "label": "Ashraya scheme",
+          "acres": 1,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-057.jpg",
+      "sourceRow": "assets/source-rows/parcel-057.jpg"
+    },
+    {
+      "id": 58,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Hunasemaranahalli",
+      "surveyNo": "179",
+      "areaAcres": 5,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 5,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-058.jpg",
+      "sourceRow": "assets/source-rows/parcel-058.jpg"
+    },
+    {
+      "id": 59,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Hunasemaranahalli",
+      "surveyNo": "158",
+      "areaAcres": 2,
+      "areaGuntas": 10,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 2,
+          "guntas": 10
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-059.jpg",
+      "sourceRow": "assets/source-rows/parcel-059.jpg"
+    },
+    {
+      "id": 60,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Hunasemaranahalli",
+      "surveyNo": "103",
+      "areaAcres": 12,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 12,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-060.jpg",
+      "sourceRow": "assets/source-rows/parcel-060.jpg"
+    },
+    {
+      "id": 61,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Maralakunte",
+      "surveyNo": "50/P31",
+      "areaAcres": 4,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 4,
+          "guntas": 0
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-061.jpg",
+      "sourceRow": "assets/source-rows/parcel-061.jpg"
+    },
+    {
+      "id": 62,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Dodda Jala",
+      "surveyNo": "46/5",
+      "areaAcres": 0,
+      "areaGuntas": 27,
+      "statusExtents": [
+        {
+          "key": "no_approach_road",
+          "label": "No approach road",
+          "acres": 0,
+          "guntas": 27
+        }
+      ],
+      "page": 4,
+      "photo": "assets/photos/parcel-062.jpg",
+      "sourceRow": "assets/source-rows/parcel-062.jpg"
+    },
+    {
+      "id": 63,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Uttanahalli",
+      "surveyNo": "35",
+      "areaAcres": 3,
+      "areaGuntas": 20,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 3,
+          "guntas": 20
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-063.jpg",
+      "sourceRow": "assets/source-rows/parcel-063.jpg"
+    },
+    {
+      "id": 64,
+      "constituency": "Byatarayanapura",
+      "taluk": "Yelahanka",
+      "hobli": "Jala",
+      "village": "Marenahalli",
+      "surveyNo": "173/P9",
+      "areaAcres": 2,
+      "areaGuntas": 10,
+      "statusExtents": [
+        {
+          "key": "encroachment",
+          "label": "Encroachment",
+          "acres": 2,
+          "guntas": 10
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-064.jpg",
+      "sourceRow": "assets/source-rows/parcel-064.jpg"
+    },
+    {
+      "id": 65,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Hesaraghatta",
+      "village": "Sriramanahalli",
+      "surveyNo": "33",
+      "areaAcres": 4,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "encroachment",
+          "label": "Encroachment",
+          "acres": 4,
+          "guntas": 0
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-065.jpg",
+      "sourceRow": "assets/source-rows/parcel-065.jpg"
+    },
+    {
+      "id": 66,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Hesaraghatta",
+      "village": "Dasivekatte",
+      "surveyNo": "70",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-066.jpg",
+      "sourceRow": "assets/source-rows/parcel-066.jpg"
+    },
+    {
+      "id": 67,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Hesaraghatta",
+      "village": "Linganajogihalli",
+      "surveyNo": "1",
+      "areaAcres": 4,
+      "areaGuntas": 22,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 4,
+          "guntas": 22
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-067.jpg",
+      "sourceRow": "assets/source-rows/parcel-067.jpg"
+    },
+    {
+      "id": 68,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Hesaraghatta",
+      "village": "Kumbharahalli",
+      "surveyNo": "8",
+      "areaAcres": 11,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 11,
+          "guntas": 0
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-068.jpg",
+      "sourceRow": "assets/source-rows/parcel-068.jpg"
+    },
+    {
+      "id": 69,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Hesaraghatta",
+      "village": "Suradenapura",
+      "surveyNo": "88 88",
+      "areaAcres": 2,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 2,
+          "guntas": 0
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-069.jpg",
+      "sourceRow": "assets/source-rows/parcel-069.jpg"
+    },
+    {
+      "id": 70,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Hesaraghatta",
+      "village": "Sadenahalli",
+      "surveyNo": "64",
+      "areaAcres": 1,
+      "areaGuntas": 12,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 1,
+          "guntas": 12
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-070.jpg",
+      "sourceRow": "assets/source-rows/parcel-070.jpg"
+    },
+    {
+      "id": 71,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Thotigere",
+      "surveyNo": "23",
+      "areaAcres": 3,
+      "areaGuntas": 22,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 3,
+          "guntas": 22
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-071.jpg",
+      "sourceRow": "assets/source-rows/parcel-071.jpg"
+    },
+    {
+      "id": 72,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Kasavanahalli",
+      "surveyNo": "80",
+      "areaAcres": 5,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "encroachment",
+          "label": "Encroachment",
+          "acres": 5,
+          "guntas": 0
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-072.jpg",
+      "sourceRow": "assets/source-rows/parcel-072.jpg"
+    },
+    {
+      "id": 73,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Lakshmipura",
+      "surveyNo": "69",
+      "areaAcres": 4,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 4,
+          "guntas": 0
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-073.jpg",
+      "sourceRow": "assets/source-rows/parcel-073.jpg"
+    },
+    {
+      "id": 74,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Lakkasandra",
+      "surveyNo": "57",
+      "areaAcres": 12,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 12,
+          "guntas": 0
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-074.jpg",
+      "sourceRow": "assets/source-rows/parcel-074.jpg"
+    },
+    {
+      "id": 75,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Mallisandra",
+      "surveyNo": "17",
+      "areaAcres": 7,
+      "areaGuntas": 38,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 7,
+          "guntas": 38
+        }
+      ],
+      "page": 5,
+      "photo": "assets/photos/parcel-075.jpg",
+      "sourceRow": "assets/source-rows/parcel-075.jpg"
+    },
+    {
+      "id": 76,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Mallisandra",
+      "surveyNo": "40",
+      "areaAcres": 13,
+      "areaGuntas": 8,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 13,
+          "guntas": 8
+        }
+      ],
+      "page": 6,
+      "photo": "assets/photos/parcel-076.jpg",
+      "sourceRow": "assets/source-rows/parcel-076.jpg"
+    },
+    {
+      "id": 77,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Kithanahalli",
+      "surveyNo": "54",
+      "areaAcres": 28,
+      "areaGuntas": 24,
+      "statusExtents": [
+        {
+          "key": "hill_or_rocky",
+          "label": "Hill / rocky area",
+          "acres": 28,
+          "guntas": 24
+        }
+      ],
+      "page": 6,
+      "photo": "assets/photos/parcel-077.jpg",
+      "sourceRow": "assets/source-rows/parcel-077.jpg"
+    },
+    {
+      "id": 78,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Bommasettihalli",
+      "surveyNo": "63",
+      "areaAcres": 5,
+      "areaGuntas": 0,
+      "statusExtents": [
+        {
+          "key": "available",
+          "label": "Available at site",
+          "acres": 5,
+          "guntas": 0
+        }
+      ],
+      "page": 6,
+      "photo": "assets/photos/parcel-078.jpg",
+      "sourceRow": "assets/source-rows/parcel-078.jpg"
+    },
+    {
+      "id": 79,
+      "constituency": "Yelahanka",
+      "taluk": "Bengaluru North",
+      "hobli": "Dasanapura",
+      "village": "Thotigere",
+      "surveyNo": "13",
+      "areaAcres": 13,
+      "areaGuntas": 27,
+      "statusExtents": [
+        {
+          "key": "dispute",
+          "label": "Land dispute / court record",
+          "acres": 13,
+          "guntas": 27
+        }
+      ],
+      "page": 6,
+      "photo": "assets/photos/parcel-079.jpg",
+      "sourceRow": "assets/source-rows/parcel-079.jpg"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163f3a">
+  <meta name="description" content="Search and review land parcels, reported extents and status notes from the land details register.">
+  <title>Land Bank | Parcel Dashboard</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true"><span>LB</span></div>
+        <div>
+          <div class="brand-name">LAND BANK</div>
+          <div class="brand-subtitle">RGHCL · BENGALURU</div>
+        </div>
+      </div>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="nav-list">
+        <button class="nav-item active" type="button" data-page="overview" aria-current="page">
+          <span class="nav-icon overview-icon" aria-hidden="true"></span><span>Overview</span>
+        </button>
+        <button class="nav-item" type="button" data-page="parcels">
+          <span class="nav-icon parcel-icon" aria-hidden="true"></span><span>Parcel register</span>
+          <span class="nav-count" id="nav-count">79</span>
+        </button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note-icon" aria-hidden="true">i</div>
+        <div>
+          <strong>Source snapshot</strong>
+          <span>20 November 2026</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>Land bank</span><span class="breadcrumb-divider">/</span><strong id="crumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="source-status"><span class="source-dot"></span>PDF source loaded</span>
+          <a class="source-link" href="./source/land-details-20-11-2026.pdf" target="_blank" rel="noreferrer">Open source PDF</a>
+        </div>
+      </header>
+
+      <section id="overview-page" class="page-section">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">LAND PARCEL REGISTER <span class="eyebrow-line"></span> 20 NOV 2026</div>
+            <h1>Land bank overview</h1>
+            <p class="heading-copy">A working view of the primary register entries (1–79) from the latest land inspection PDF.</p>
+          </div>
+          <button class="primary-button" id="open-register" type="button"><span class="button-grid" aria-hidden="true"></span>Browse parcels</button>
+        </div>
+
+        <div class="kpi-grid" id="kpi-grid" aria-label="Land bank summary">
+          <article class="kpi-card">
+            <div class="kpi-topline"><span class="kpi-label">Parcel records</span><span class="kpi-icon icon-parcels" aria-hidden="true"></span></div>
+            <div class="kpi-value" id="parcel-count">—</div>
+            <div class="kpi-caption">Across the listed constituencies</div>
+          </article>
+          <article class="kpi-card featured-kpi">
+            <div class="kpi-topline"><span class="kpi-label">Reported land extent</span><span class="kpi-icon icon-area" aria-hidden="true"></span></div>
+            <div class="kpi-value area-value" id="total-area">—</div>
+            <div class="kpi-caption">40 guntas = 1 acre · normalized from source rows</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-topline"><span class="kpi-label">Available at site</span><span class="kpi-icon icon-available" aria-hidden="true"></span></div>
+            <div class="kpi-value" id="available-count">—</div>
+            <div class="kpi-caption" id="available-area">Recorded under the source availability column</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-topline"><span class="kpi-label">GPS photo records</span><span class="kpi-icon icon-photo" aria-hidden="true"></span></div>
+            <div class="kpi-value" id="photo-count">—</div>
+            <div class="kpi-caption">Photo evidence is available for each row</div>
+          </article>
+        </div>
+
+        <div class="overview-grid">
+          <article class="panel constituency-panel">
+            <div class="panel-heading">
+              <div>
+                <div class="section-kicker">DISTRIBUTION</div>
+                <h2>Parcels by constituency</h2>
+              </div>
+              <span class="panel-unit">Total area</span>
+            </div>
+            <div id="constituency-chart" class="bar-chart" aria-label="Parcel count and land extent by constituency"></div>
+          </article>
+
+          <article class="panel status-panel">
+            <div class="panel-heading">
+              <div>
+                <div class="section-kicker">SOURCE STATUS COLUMNS</div>
+                <h2>Recorded land status</h2>
+              </div>
+              <span class="panel-unit">Parcels</span>
+            </div>
+            <div id="status-chart" class="status-chart" aria-label="Parcel counts by recorded land status"></div>
+            <p class="panel-footnote">A parcel can have more than one status entry. Counts overlap.</p>
+          </article>
+        </div>
+
+        <div class="overview-grid lower-grid">
+          <article class="panel largest-panel">
+            <div class="panel-heading">
+              <div>
+                <div class="section-kicker">QUICK REVIEW</div>
+                <h2>Largest reported parcels</h2>
+              </div>
+              <button class="text-button" id="see-all" type="button">View all parcels</button>
+            </div>
+            <div id="largest-list" class="largest-list"></div>
+          </article>
+          <article class="panel coordinates-panel">
+            <div class="coordinates-head">
+              <div class="coordinates-mark" aria-hidden="true"><span></span></div>
+              <div>
+                <div class="section-kicker">LOCATION DATA</div>
+                <h2>Photo evidence, no coordinates</h2>
+              </div>
+            </div>
+            <p>The PDF includes GPS-labelled site photographs, but it does not contain latitude and longitude values to plot parcel boundaries on a map.</p>
+            <div class="coordinates-stat"><strong>0</strong><span>machine-readable coordinates in this source</span></div>
+          </article>
+        </div>
+        <div class="data-note"><span class="note-mark">i</span><p>This dashboard covers the primary register rows 1–79, whose subtotal is 496 acres 34 guntas. The PDF’s separate “ಉಳಿಕೆ” (remaining) section, rows 80–103, is excluded. Status extents are shown as entered and may not reconcile with the parcel total. Use the source row or PDF to verify legal and survey notes.</p></div>
+      </section>
+
+      <section id="parcels-page" class="page-section hidden">
+        <div class="page-heading register-heading">
+          <div>
+            <div class="eyebrow">LAND PARCEL REGISTER <span class="eyebrow-line"></span> 79 RECORDS</div>
+            <h1>Parcel register</h1>
+            <p class="heading-copy">Search the source rows, filter by area and review each parcel’s status extents.</p>
+          </div>
+          <button class="secondary-button" id="export-csv" type="button"><span class="download-icon" aria-hidden="true"></span>Export visible rows</button>
+        </div>
+
+        <div class="register-toolbar">
+          <label class="search-field">
+            <span class="search-icon" aria-hidden="true"></span>
+            <span class="sr-only">Search parcels</span>
+            <input id="search-input" type="search" placeholder="Search village, survey number, taluk…" autocomplete="off">
+            <kbd>Ctrl K</kbd>
+          </label>
+          <label class="filter-select"><span>Constituency</span><select id="constituency-filter"><option value="all">All constituencies</option></select></label>
+          <label class="filter-select"><span>Taluk</span><select id="taluk-filter"><option value="all">All taluks</option></select></label>
+          <label class="filter-select"><span>Status</span><select id="status-filter"><option value="all">All status tags</option></select></label>
+          <label class="filter-select sort-select"><span>Sort by</span><select id="sort-select"><option value="id">Register order</option><option value="area-desc">Largest area</option><option value="area-asc">Smallest area</option><option value="village">Village name</option></select></label>
+        </div>
+        <div class="register-summary"><span id="result-count">Loading parcel data…</span><button class="clear-filters hidden" id="clear-filters" type="button">Clear filters</button><span class="table-unit">Land area in acres and guntas</span></div>
+
+        <div class="table-shell">
+          <table class="parcel-table">
+            <thead><tr>
+              <th class="th-id">No.</th><th class="th-location">Location</th><th>Survey no.</th><th>Constituency</th><th class="th-area">Extent</th><th class="th-status">Source status</th><th class="th-photo">Photo</th>
+            </tr></thead>
+            <tbody id="parcel-table-body"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state hidden"><div class="empty-mark" aria-hidden="true"></div><h3>No parcels match these filters</h3><p>Try another village, survey number or status.</p><button id="reset-empty" class="secondary-button" type="button">Reset filters</button></div>
+        </div>
+        <div class="table-footer"><span id="table-footer-count"></span><span>Locality names are transliterations · Source PDF dated 20 Nov 2026</span></div>
+      </section>
+
+      <footer class="app-footer"><span>Land Bank · Parcel Dashboard</span><span>Source snapshot: 20 Nov 2026</span></footer>
+    </main>
+  </div>
+
+  <div id="drawer-backdrop" class="drawer-backdrop hidden" aria-hidden="true"></div>
+  <aside id="parcel-drawer" class="parcel-drawer" aria-label="Parcel details" aria-hidden="true">
+    <div class="drawer-topbar"><span class="drawer-kicker">PARCEL DETAIL</span><button id="close-drawer" class="close-button" type="button" aria-label="Close parcel detail"><span></span><span></span></button></div>
+    <div id="drawer-content"></div>
+  </aside>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
