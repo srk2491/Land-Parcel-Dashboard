@@ -27,37 +27,27 @@ npm run build
 npm run start
 ```
 
-## Local photo/video uploads
+## Cloudflare Pages and online media setup
 
-Media editing uses local D1/R2 emulation and the local preview identity. To enable it, create a `.dev.vars` file in the project root containing:
+The GitHub repository holds the app and the parcel register. Cloudflare Pages serves the static dashboard and deploys each push. Supabase stores uploaded media separately, so photos and videos appear online without a GitHub commit.
 
-```dotenv
-MEDIA_ADMIN_USER_IDS=local_seedy
-```
+This setup reuses the OLH Supabase project, its `official_media_uploaders` allowlist, and the `is_olh_media_uploader()` policy function. Run `supabase/land-parcel-media.sql` in that project's SQL Editor. It creates a separate `land_parcel_media` table and public `land-parcel-media` bucket, with uploads restricted to approved OLH media editors. This is additive; do not rerun the OLH base media schema.
 
-Then build once and create the local metadata table:
+In `public/media-config.js`, fill in the existing Supabase Project URL and publishable/anon key, and keep the bucket name `land-parcel-media`. The publishable/anon key is designed for browser use only because row-level security is enabled. **Never put a Supabase service-role key in this file or the GitHub repository.**
 
-```bash
-npm run build
-npx wrangler d1 execute site-creator-d1 --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_steep_adam_warlock.sql
-npm run dev
-```
+In Supabase **Authentication → URL Configuration**, add the Cloudflare Pages URL, such as `https://land-parcel-dashboard.pages.dev/**`, to **Redirect URLs**. Keep the OLH URL there too; leave the existing **Site URL** unchanged because OLH uses that default for its invite links. Existing approved OLH media editors can sign in to this app. For a new editor, create the Auth account using your existing OLH invite process, then activate their lower-case email in `public.official_media_uploaders` before they sign in. Keep public sign-ups disabled.
 
-The local preview stores uploaded media on your computer under Wrangler's local state. `.dev.vars` is ignored by Git; never commit real secrets.
+In Cloudflare, create a **Pages** project connected to `srk2491/Land-Parcel-Dashboard`. Use production branch `main`, build command `exit 0`, and output directory `public`. After the first deploy, copy its `pages.dev` URL into Supabase Redirect URLs, then commit and push `public/media-config.js`. Cloudflare automatically redeploys the update.
 
-## GitHub and hosting
-
-Upload the project files to a GitHub repository. Do not upload `node_modules`, `.git`, `.next`, `.wrangler`, `.sites-runtime`, or `dist`; those are local or generated files. After cloning the repository on another computer, run `npm install` and `npm run dev`.
-
-GitHub stores the source. The media API needs the Cloudflare Worker runtime, D1 for media records, and R2 for original files; GitHub Pages alone serves only static files and cannot run these upload routes. For the existing ChatGPT Site deployment, configure the `DB` and `BUCKET` bindings and set the secret `MEDIA_ADMIN_USER_IDS` to the authorized Site user ID. The Site is public, so uploaded media can be viewed by anyone with the dashboard link; editing is owner-only.
+For local dashboard use, run `npm install` and `npm run dev`. If `public/media-config.js` has valid Supabase settings, media uploads go to the online Supabase project from local testing too.
 
 ## Media behavior
 
-- The PDF-embedded GPS photo remains unchanged as source evidence.
-- Add, replace, or delete high-resolution field photos and videos from each parcel drawer.
-- Accepted formats: JPG/JPEG, PNG, WebP, HEIC/HEIF, MP4, MOV/QuickTime, and WebM.
-- Uploads use 8 MiB multipart chunks and accept files up to 1 GiB each.
-- R2 stores the original media; D1 stores its parcel association and metadata.
+- The dashboard shows PDF source photos and row crops separately from uploaded field media.
+- An approved editor opens a parcel, chooses **Manage photos and videos for this parcel**, signs in, then uploads, replaces, or deletes media in the manager.
+- Accepted upload formats: JPG/JPEG, PNG, WebP, MP4 and WebM. The current bucket limit is 90 MB per file.
+- Supabase Storage holds the files; `land_parcel_media` stores each file's parcel number and metadata. The bucket is public for viewing, while RLS restricts changes to approved editors.
+- Uploads appear after the dashboard is refreshed. They do not require a scraper run, GitHub commit, or Cloudflare redeploy.
 
 ## Project layout
 

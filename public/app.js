@@ -145,120 +145,34 @@
     var target = $("#field-media");
     if (!target) return;
     target.innerHTML = '<p class="media-loading">Loading site photos and videos…</p>';
-    Promise.all([
-      fetch("/api/media/access", { cache: "no-store" }).then(function (response) { return response.json(); }),
-      fetch("/api/media?parcelId=" + encodeURIComponent(parcelId), { cache: "no-store" }).then(function (response) { if (!response.ok) throw new Error("Could not load the media library"); return response.json(); })
-    ]).then(function (results) {
-      renderParcelMedia(parcelId, results[1], results[0]);
+    if (!window.LandParcelMedia || !window.LandParcelMedia.ready()) {
+      target.innerHTML = '<p class="media-readonly">Online photo and video storage has not been configured yet.</p>';
+      return;
+    }
+    Promise.all([window.LandParcelMedia.list(parcelId), window.LandParcelMedia.getAccess()]).then(function (results) {
+      renderParcelMedia(parcelId, results[0], results[1]);
     }).catch(function () {
-      if (state.selected && state.selected.id === parcelId) $("#field-media").innerHTML = '<p class="media-error">The media library could not be loaded. Try closing and reopening this parcel.</p>';
+      if (state.selected && state.selected.id === parcelId) {
+        $("#field-media").innerHTML = '<p class="media-error">The media library could not be loaded. Try closing and reopening this parcel.</p>';
+      }
     });
   }
-  function renderParcelMedia(parcelId, payload, access) {
+  function renderParcelMedia(parcelId, items, access) {
     if (!state.selected || state.selected.id !== parcelId) return;
-    var items = payload.media || [];
     var cards = items.map(function (item) {
-      var url = "/api/media/file/" + encodeURIComponent(item.id);
+      var url = item.url;
       var preview = item.mediaType === "video"
         ? '<video controls preload="metadata" src="' + escapeHtml(url) + '" aria-label="Video for parcel ' + parcelId + '"></video>'
         : '<a href="' + escapeHtml(url) + '" target="_blank" rel="noreferrer"><img src="' + escapeHtml(url) + '" alt="Uploaded site photo: ' + escapeHtml(item.fileName) + '" loading="lazy"></a>';
-      var actions = access.isAdmin
-        ? '<div class="media-actions"><button type="button" data-media-replace="' + escapeHtml(item.id) + '" data-media-type="' + escapeHtml(item.mediaType) + '">Replace</button><button type="button" class="media-delete" data-media-delete="' + escapeHtml(item.id) + '">Delete</button></div>'
-        : '';
-      return '<article class="media-card">' + preview + '<div class="media-card-info"><strong title="' + escapeHtml(item.fileName) + '">' + escapeHtml(item.fileName) + '</strong><span>' + (item.mediaType === "video" ? "Video" : "Photo") + ' · ' + formatBytes(item.sizeBytes) + '</span></div>' + actions + '</article>';
+      return '<article class="media-card">' + preview + '<div class="media-card-info"><strong title="' + escapeHtml(item.fileName) + '">' + escapeHtml(item.fileName) + '</strong><span>' + (item.mediaType === "video" ? "Video" : "Photo") + ' · ' + formatBytes(item.sizeBytes) + '</span></div></article>';
     }).join("");
     var editor = access.isAdmin
-      ? '<div class="media-editor"><label class="media-upload-button">Add photos or videos<input id="media-upload-input" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/quicktime,video/webm" multiple></label><span class="media-upload-hint">JPG, PNG, WebP, HEIC, MP4, MOV or WebM · up to 1 GB per file</span><progress id="media-progress" class="media-progress" max="100" value="0" hidden></progress><p id="media-upload-status" class="media-upload-status" aria-live="polite"></p></div>'
+      ? '<a class="media-signin" href="/media-admin.html?parcel=' + encodeURIComponent(parcelId) + '">Manage photos and videos for this parcel</a>'
       : (!access.signedIn
-        ? '<a class="media-signin" href="' + escapeHtml(access.signInUrl || "/signin") + '" target="_top">Sign in to upload media</a>'
-        : '<p class="media-readonly">Media editing is restricted to the dashboard owner.</p>');
+        ? '<a class="media-signin" href="/media-admin.html?parcel=' + encodeURIComponent(parcelId) + '">Sign in to upload media</a>'
+        : '<p class="media-readonly">Media editing is restricted to approved editors.</p>');
     var empty = items.length ? '' : '<p class="media-empty">No high-resolution photos or videos have been uploaded for this parcel yet.</p>';
     $("#field-media").innerHTML = '<p class="media-visibility-note">Uploaded media is visible to people who can open this dashboard.</p>' + (items.length ? '<div class="media-gallery">' + cards + '</div>' : empty) + editor;
-    if (access.isAdmin) bindMediaControls(parcelId);
-  }
-  function bindMediaControls(parcelId) {
-    var input = $("#media-upload-input");
-    if (input) input.addEventListener("change", function () {
-      uploadMediaFiles(Array.from(input.files || []), parcelId, null);
-      input.value = "";
-    });
-    $$("[data-media-replace]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var replaceId = button.getAttribute("data-media-replace");
-        var mediaType = button.getAttribute("data-media-type");
-        var chooser = document.createElement("input");
-        chooser.type = "file";
-        chooser.accept = mediaType === "video" ? "video/mp4,video/quicktime,video/webm" : "image/jpeg,image/png,image/webp,image/heic,image/heif";
-        chooser.addEventListener("change", function () { if (chooser.files && chooser.files[0]) uploadMediaFiles([chooser.files[0]], parcelId, replaceId); });
-        chooser.click();
-      });
-    });
-    $$("[data-media-delete]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var id = button.getAttribute("data-media-delete");
-        if (!window.confirm("Delete this uploaded media item?")) return;
-        fetch("/api/media/" + encodeURIComponent(id), { method: "DELETE" }).then(function (response) {
-          return response.json().then(function (body) { if (!response.ok) throw new Error(body.error || "Could not delete media"); });
-        }).then(function () { showToast("Media item deleted"); loadParcelMedia(parcelId); }).catch(function (error) { showToast(error.message); });
-      });
-    });
-  }
-  function uploadPart(url, blob, onProgress) {
-    return new Promise(function (resolve, reject) {
-      var xhr = new XMLHttpRequest();
-      xhr.open("PUT", url);
-      xhr.setRequestHeader("Content-Type", "application/octet-stream");
-      xhr.upload.addEventListener("progress", function (event) { if (event.lengthComputable) onProgress(event.loaded, event.total); });
-      xhr.onload = function () {
-        var result;
-        try { result = JSON.parse(xhr.responseText); } catch (_) { result = {}; }
-        if (xhr.status < 200 || xhr.status >= 300) reject(new Error(result.error || "A video or photo part failed to upload"));
-        else resolve(result);
-      };
-      xhr.onerror = function () { reject(new Error("Network error while uploading media")); };
-      xhr.send(blob);
-    });
-  }
-  async function uploadMediaFiles(files, parcelId, replaceId) {
-    var status = $("#media-upload-status");
-    var progress = $("#media-progress");
-    if (!files.length || !status || !progress) return;
-    var maxBytes = 1024 * 1024 * 1024;
-    for (var f = 0; f < files.length; f += 1) {
-      var file = files[f];
-      if (file.size > maxBytes) { status.textContent = file.name + " is larger than 1 GB."; continue; }
-      status.textContent = "Preparing " + file.name + "…";
-      progress.hidden = false; progress.max = file.size; progress.value = 0;
-      var session = null;
-      try {
-        var initResponse = await fetch("/api/media/upload/init", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ parcelId: parcelId, fileName: file.name, mimeType: file.type, sizeBytes: file.size, replaceId: replaceId }) });
-        var init = await initResponse.json();
-        if (!initResponse.ok) throw new Error(init.error || "Could not start upload");
-        session = init;
-        var parts = [];
-        var partSize = Number(init.partSize) || 8 * 1024 * 1024;
-        var uploadedBefore = 0;
-        for (var start = 0, partNumber = 1; start < file.size; start += partSize, partNumber += 1) {
-          var chunk = file.slice(start, Math.min(start + partSize, file.size));
-          status.textContent = "Uploading " + file.name + " · part " + partNumber + " of " + Math.ceil(file.size / partSize);
-          var part = await uploadPart("/api/media/upload/part?key=" + encodeURIComponent(init.key) + "&uploadId=" + encodeURIComponent(init.uploadId) + "&partNumber=" + partNumber, chunk, function (loaded) { progress.value = Math.min(file.size, uploadedBefore + loaded); });
-          parts.push({ partNumber: partNumber, etag: part.etag });
-          uploadedBefore += chunk.size; progress.value = uploadedBefore;
-        }
-        var completeResponse = await fetch("/api/media/upload/complete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ parcelId: parcelId, key: init.key, uploadId: init.uploadId, fileName: file.name, mimeType: file.type, sizeBytes: file.size, replaceId: replaceId, parts: parts }) });
-        var completed = await completeResponse.json();
-        if (!completeResponse.ok) throw new Error(completed.error || "Could not finish upload");
-        status.textContent = "Saved " + file.name;
-        replaceId = null;
-      } catch (error) {
-        if (session) fetch("/api/media/upload/abort", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ key: session.key, uploadId: session.uploadId }) }).catch(function () {});
-        status.textContent = error.message || "Upload failed. Try again.";
-        showToast(status.textContent);
-        continue;
-      }
-    }
-    progress.hidden = true;
-    loadParcelMedia(parcelId);
   }
   function renderDrawer(p) {
     var statuses = (p.statusExtents || []).length ? p.statusExtents.map(function (entry) {
@@ -338,6 +252,8 @@
     bindEvents();
     fetch("./data/parcels.json").then(function (response) { if (!response.ok) throw new Error("Could not load parcel data"); return response.json(); }).then(function (data) {
       state.data = data; state.parcels = data.parcels; fillFilters(); renderSummary(); renderRows();
+      var requestedParcel = Number(new URLSearchParams(window.location.search).get("parcel"));
+      if (Number.isInteger(requestedParcel) && requestedParcel >= 1 && requestedParcel <= 79) openParcel(requestedParcel);
     }).catch(function () {
       $("#parcel-count").textContent = "Unavailable";
       $("#result-count").textContent = "Parcel data could not be loaded";
