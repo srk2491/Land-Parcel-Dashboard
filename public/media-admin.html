@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163f3a">
+  <title>Parcel Media Manager | Land Bank</title>
+  <link rel="stylesheet" href="./media-admin.css">
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a class="brand" href="./index.html">LAND BANK <span>· Parcel media</span></a>
+      <a id="return-link" class="return-link" href="./index.html">Return to dashboard</a>
+    </header>
+
+    <section id="login-panel" class="panel login-panel">
+      <p class="eyebrow">APPROVED EDITORS</p>
+      <h1>Sign in to manage parcel media</h1>
+      <p class="muted">Use the Supabase account approved for the OLH media uploader. Published photos and videos can be viewed by anyone with the dashboard link.</p>
+      <form id="login-form">
+        <label>Email<input id="email" type="email" autocomplete="username" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+        <button id="login-button" type="submit">Sign in</button>
+      </form>
+      <button id="forgot-password" class="text-button" type="button">Forgot password?</button>
+      <p id="login-status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="password-panel" class="panel login-panel" hidden>
+      <p class="eyebrow">ACCOUNT SETUP</p>
+      <h1 id="password-title">Set your media-editor password</h1>
+      <p id="password-description" class="muted">Choose a password for your approved editor account.</p>
+      <form id="password-form">
+        <label>New password<input id="new-password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label>Confirm password<input id="confirm-password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <button id="save-password" type="submit">Save password</button>
+      </form>
+      <p id="password-status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="manager-panel" class="panel manager-panel" hidden>
+      <div class="manager-top">
+        <div><p class="eyebrow">MEDIA LIBRARY</p><h1>Manage parcel photos and videos</h1><p id="signed-in-as" class="muted"></p></div>
+        <button id="sign-out" class="secondary-button" type="button">Sign out</button>
+      </div>
+      <label class="parcel-label">Choose parcel<select id="parcel-select"></select></label>
+      <form id="upload-form" class="upload-form">
+        <label>Photos or videos<input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/webm" multiple></label>
+        <p class="hint">JPG, PNG, WebP, MP4 or WebM · up to 90 MB per file</p>
+        <button id="upload-button" type="submit">Upload selected files</button>
+      </form>
+      <p id="manager-status" class="status" role="status" aria-live="polite"></p>
+      <div class="gallery-heading"><h2>Published media for this parcel</h2><span id="item-count">0 items</span></div>
+      <div id="gallery" class="gallery"></div>
+    </section>
+
+    <p id="setup-note" class="setup-note" hidden>Supabase media storage is not configured. Complete the setup steps in the project README first.</p>
+  </main>
+  <script src="./media-config.js"></script>
+  <script src="./media-cloud.js"></script>
+  <script src="./media-admin.js" defer></script>
+</body>
+</html>
