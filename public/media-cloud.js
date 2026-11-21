@@ -24,7 +24,11 @@
   function saveSession(value) { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value)); }
   function clearSession() { sessionStorage.removeItem(STORAGE_KEY); }
   function headers(token) {
-    return { apikey: cfg().anonKey, Authorization: 'Bearer ' + (token || cfg().anonKey) };
+    var key = cfg().anonKey;
+    var bearer = token || (/^sb_publishable_/.test(key) ? '' : key);
+    var result = { apikey: key };
+    if (bearer) result.Authorization = 'Bearer ' + bearer;
+    return result;
   }
   async function responseJson(response) {
     var body = await response.json().catch(function () { return {}; });
