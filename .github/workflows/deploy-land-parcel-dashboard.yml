@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "public/**"
+      - ".github/workflows/deploy-land-parcel-dashboard.yml"
   workflow_dispatch:
 
 permissions:
