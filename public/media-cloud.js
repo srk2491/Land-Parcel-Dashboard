@@ -133,6 +133,34 @@
       uploadedAt: row.created_at, objectPath: row.object_path, url: publicUrl(row.object_path)
     }; });
   }
+
+  async function listNotes(parcelId) {
+    var id = Number(parcelId);
+    if (!Number.isInteger(id) || id < 1 || id > 79) throw new Error('Choose a parcel from 1 to 79.');
+    if (!ready()) return [];
+    var rows = await request('/rest/v1/land_parcel_site_notes?select=id,parcel_id,note,created_at&parcel_id=eq.' +
+      encodeURIComponent(id) + '&order=created_at.desc');
+    return (rows || []).map(function (row) {
+      return { id: row.id, parcelId: Number(row.parcel_id), note: row.note, createdAt: row.created_at };
+    });
+  }
+  async function addNote(parcelId, note) {
+    var id = Number(parcelId), value = String(note || '').trim();
+    if (!Number.isInteger(id) || id < 1 || id > 79) throw new Error('Choose a parcel from 1 to 79.');
+    if (!value || value.length > 5000) throw new Error('Notes must be between 1 and 5,000 characters.');
+    if (!ready()) throw new Error('Online notes storage is not configured yet.');
+    await token();
+    var session = readSession();
+    if (!(await isApproved(session))) throw new Error('Only approved editors can add site notes.');
+    var rows = await request('/rest/v1/land_parcel_site_notes', {
+      auth: true, method: 'POST',
+      headers: { 'Content-Type': 'application/json', Prefer: 'return=representation' },
+      body: JSON.stringify({ parcel_id: id, note: value, created_by: session.user.id })
+    });
+    return rows && rows[0] ? {
+      id: rows[0].id, parcelId: Number(rows[0].parcel_id), note: rows[0].note, createdAt: rows[0].created_at
+    } : null;
+  }
   function fileInfo(file) {
     var ext = String(file.name).split('.').pop().toLowerCase();
     var info = TYPES[ext];
@@ -202,7 +230,7 @@
   root.LandParcelMedia = {
     ready: ready, getAccess: getAccess, signIn: signIn, sendPasswordReset: sendPasswordReset,
     consumeAuthCallback: consumeAuthCallback, setPassword: setPassword,
-    clearSession: clearSession, list: list, upload: upload, remove: remove,
+    clearSession: clearSession, list: list, listNotes: listNotes, addNote: addNote, upload: upload, remove: remove,
     fileInfo: fileInfo, maxBytes: MAX_BYTES
   };
 })(window);
