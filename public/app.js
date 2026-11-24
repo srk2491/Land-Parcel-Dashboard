@@ -145,63 +145,38 @@
     var target = $("#field-media");
     if (!target) return;
     target.innerHTML = '<p class="media-loading">Loading site photos and videos…</p>';
-    Promise.all([
-      fetch("/api/media/access", { cache: "no-store" }).then(function (response) { return response.json(); }),
-      fetch("/api/media?parcelId=" + encodeURIComponent(parcelId), { cache: "no-store" }).then(function (response) { if (!response.ok) throw new Error("Could not load the media library"); return response.json(); })
-    ]).then(function (results) {
-      renderParcelMedia(parcelId, results[1], results[0]);
-    }).catch(function () {
-      if (state.selected && state.selected.id === parcelId) $("#field-media").innerHTML = '<p class="media-error">The media library could not be loaded. Try closing and reopening this parcel.</p>';
+    var media = window.LandParcelMedia;
+    if (!media || !media.ready()) {
+      target.innerHTML = '<p class="media-error">Online media storage is not configured yet.</p>';
+      return;
+    }
+    Promise.all([media.list(parcelId), media.getAccess()]).then(function (results) {
+      renderParcelMedia(parcelId, results[0], results[1]);
+    }).catch(function (error) {
+      if (state.selected && state.selected.id === parcelId) {
+        target.innerHTML = '<p class="media-error">' + escapeHtml(error && error.message ? error.message : "The media library could not be loaded.") + '</p>';
+      }
     });
   }
-  function renderParcelMedia(parcelId, payload, access) {
+  function renderParcelMedia(parcelId, items, access) {
     if (!state.selected || state.selected.id !== parcelId) return;
-    var items = payload.media || [];
+    items = Array.isArray(items) ? items : [];
+    access = access || {};
     var cards = items.map(function (item) {
-      var url = "/api/media/file/" + encodeURIComponent(item.id);
+      var url = escapeHtml(item.url || "");
       var preview = item.mediaType === "video"
-        ? '<video controls preload="metadata" src="' + escapeHtml(url) + '" aria-label="Video for parcel ' + parcelId + '"></video>'
-        : '<a href="' + escapeHtml(url) + '" target="_blank" rel="noreferrer"><img src="' + escapeHtml(url) + '" alt="Uploaded site photo: ' + escapeHtml(item.fileName) + '" loading="lazy"></a>';
-      var actions = access.isAdmin
-        ? '<div class="media-actions"><button type="button" data-media-replace="' + escapeHtml(item.id) + '" data-media-type="' + escapeHtml(item.mediaType) + '">Replace</button><button type="button" class="media-delete" data-media-delete="' + escapeHtml(item.id) + '">Delete</button></div>'
-        : '';
-      return '<article class="media-card">' + preview + '<div class="media-card-info"><strong title="' + escapeHtml(item.fileName) + '">' + escapeHtml(item.fileName) + '</strong><span>' + (item.mediaType === "video" ? "Video" : "Photo") + ' · ' + formatBytes(item.sizeBytes) + '</span></div>' + actions + '</article>';
+        ? '<video controls preload="metadata" src="' + url + '" aria-label="Video for parcel ' + parcelId + '"></video>'
+        : '<a href="' + url + '" target="_blank" rel="noreferrer"><img src="' + url + '" alt="Uploaded site photo: ' + escapeHtml(item.fileName) + '" loading="lazy"></a>';
+      return '<article class="media-card">' + preview + '<div class="media-card-info"><strong title="' + escapeHtml(item.fileName) + '">' + escapeHtml(item.fileName) + '</strong><span>' + (item.mediaType === "video" ? "Video" : "Photo") + ' · ' + formatBytes(item.sizeBytes) + '</span></div></article>';
     }).join("");
+    var managerUrl = './media-admin.html?parcel=' + encodeURIComponent(parcelId);
     var editor = access.isAdmin
-      ? '<div class="media-editor"><label class="media-upload-button">Add photos or videos<input id="media-upload-input" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/quicktime,video/webm" multiple></label><span class="media-upload-hint">JPG, PNG, WebP, HEIC, MP4, MOV or WebM · up to 1 GB per file</span><progress id="media-progress" class="media-progress" max="100" value="0" hidden></progress><p id="media-upload-status" class="media-upload-status" aria-live="polite"></p></div>'
-      : (!access.signedIn
-        ? '<a class="media-signin" href="' + escapeHtml(access.signInUrl || "/signin") + '" target="_top">Sign in to upload media</a>'
-        : '<p class="media-readonly">Media editing is restricted to the dashboard owner.</p>');
+      ? '<a class="media-signin" href="' + escapeHtml(managerUrl) + '" target="_top">Manage parcel media</a>'
+      : (access.signedIn
+        ? '<p class="media-readonly">Media editing is restricted to approved editors.</p>'
+        : '<a class="media-signin" href="' + escapeHtml(managerUrl) + '" target="_top">Sign in to upload photos or videos</a>');
     var empty = items.length ? '' : '<p class="media-empty">No high-resolution photos or videos have been uploaded for this parcel yet.</p>';
-    $("#field-media").innerHTML = '<p class="media-visibility-note">Uploaded media is visible to people who can open this dashboard.</p>' + (items.length ? '<div class="media-gallery">' + cards + '</div>' : empty) + editor;
-    if (access.isAdmin) bindMediaControls(parcelId);
-  }
-  function bindMediaControls(parcelId) {
-    var input = $("#media-upload-input");
-    if (input) input.addEventListener("change", function () {
-      uploadMediaFiles(Array.from(input.files || []), parcelId, null);
-      input.value = "";
-    });
-    $$("[data-media-replace]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var replaceId = button.getAttribute("data-media-replace");
-        var mediaType = button.getAttribute("data-media-type");
-        var chooser = document.createElement("input");
-        chooser.type = "file";
-        chooser.accept = mediaType === "video" ? "video/mp4,video/quicktime,video/webm" : "image/jpeg,image/png,image/webp,image/heic,image/heif";
-        chooser.addEventListener("change", function () { if (chooser.files && chooser.files[0]) uploadMediaFiles([chooser.files[0]], parcelId, replaceId); });
-        chooser.click();
-      });
-    });
-    $$("[data-media-delete]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var id = button.getAttribute("data-media-delete");
-        if (!window.confirm("Delete this uploaded media item?")) return;
-        fetch("/api/media/" + encodeURIComponent(id), { method: "DELETE" }).then(function (response) {
-          return response.json().then(function (body) { if (!response.ok) throw new Error(body.error || "Could not delete media"); });
-        }).then(function () { showToast("Media item deleted"); loadParcelMedia(parcelId); }).catch(function (error) { showToast(error.message); });
-      });
-    });
+    $("#field-media").innerHTML = '<p class="media-visibility-note">Uploaded media is visible to anyone who can open this dashboard.</p>' + (items.length ? '<div class="media-gallery">' + cards + '</div>' : empty) + editor;
   }
   function uploadPart(url, blob, onProgress) {
     return new Promise(function (resolve, reject) {
