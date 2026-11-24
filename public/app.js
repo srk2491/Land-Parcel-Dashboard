@@ -178,6 +178,64 @@
     var empty = items.length ? '' : '<p class="media-empty">No high-resolution photos or videos have been uploaded for this parcel yet.</p>';
     $("#field-media").innerHTML = '<p class="media-visibility-note">Uploaded media is visible to anyone who can open this dashboard.</p>' + (items.length ? '<div class="media-gallery">' + cards + '</div>' : empty) + editor;
   }
+
+  function loadParcelNotes(parcelId) {
+    var target = $("#field-notes");
+    if (!target) return;
+    target.innerHTML = '<p class="media-loading">Loading site notes…</p>';
+    var media = window.LandParcelMedia;
+    if (!media || !media.ready() || typeof media.listNotes !== "function") {
+      target.innerHTML = '<p class="media-error">Online notes storage is not configured yet.</p>';
+      return;
+    }
+    Promise.all([media.listNotes(parcelId), media.getAccess()]).then(function (results) {
+      renderParcelNotes(parcelId, results[0], results[1]);
+    }).catch(function (error) {
+      if (state.selected && state.selected.id === parcelId) {
+        target.innerHTML = '<p class="media-error">Could not load site notes. Confirm the notes SQL setup has been run in Supabase.</p><p class="media-error">' + escapeHtml(error && error.message ? error.message : "The notes library could not be loaded.") + '</p>';
+      }
+    });
+  }
+  function renderParcelNotes(parcelId, items, access) {
+    if (!state.selected || state.selected.id !== parcelId) return;
+    items = Array.isArray(items) ? items : [];
+    access = access || {};
+    var notes = items.map(function (item) {
+      var createdAt = item.createdAt ? new Date(item.createdAt) : null;
+      var dateText = createdAt && !Number.isNaN(createdAt.getTime())
+        ? createdAt.toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })
+        : "";
+      return '<article class="site-note"><time class="site-note-meta" datetime="' + escapeHtml(item.createdAt || "") + '">' + escapeHtml(dateText) + '</time><p class="site-note-body">' + escapeHtml(item.note) + '</p></article>';
+    }).join("");
+    var managerUrl = './media-admin.html?parcel=' + encodeURIComponent(parcelId);
+    var editor = access.isAdmin
+      ? '<form id="site-note-form" class="site-note-form"><label for="site-note-input">Add a note</label><textarea id="site-note-input" name="note" rows="4" maxlength="5000" placeholder="Write an update about this site…" required></textarea><div class="site-note-form-footer"><span>Up to 5,000 characters</span><button type="submit">Save note</button></div><p id="site-note-status" class="site-note-status" role="status" aria-live="polite"></p></form>'
+      : (access.signedIn
+        ? '<p class="media-readonly">Only approved editors can add notes.</p>'
+        : '<a class="media-signin" href="' + escapeHtml(managerUrl) + '" target="_top">Sign in to add a note</a>');
+    var empty = items.length ? "" : '<p class="media-empty">No notes have been added for this site yet.</p>';
+    $("#field-notes").innerHTML = '<p class="site-notes-visibility">Notes are shared with everyone who can view this dashboard. Avoid adding personal or confidential information.</p>' +
+      (items.length ? '<div class="site-note-list">' + notes + '</div>' : empty) + editor;
+    var form = $("#site-note-form");
+    if (form) form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      var input = $("#site-note-input");
+      var status = $("#site-note-status");
+      var button = form.querySelector('button[type="submit"]');
+      var note = input.value.trim();
+      if (!note) { status.textContent = "Write a note before saving."; return; }
+      button.disabled = true;
+      status.textContent = "Saving note…";
+      try {
+        await media.addNote(parcelId, note);
+        showToast("Note added to this site");
+        await loadParcelNotes(parcelId);
+      } catch (error) {
+        status.textContent = error && error.message ? error.message : "Could not save this note.";
+        button.disabled = false;
+      }
+    });
+  }
   function uploadPart(url, blob, onProgress) {
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
@@ -250,6 +308,7 @@
       '</div>' +
       '<section class="drawer-section"><div class="drawer-section-head"><h3>Status extents recorded</h3><span>as entered in PDF</span></div><div class="drawer-status-list">' + statuses + '</div><p class="source-caption">Status amounts are copied from their source columns. They may not reconcile with the parcel extent.</p></section>' +
       '<section class="drawer-section media-library-section"><div class="drawer-section-head"><h3>Site photos &amp; videos</h3><span>High-resolution uploads</span></div><div id="field-media"><p class="media-loading">Loading site photos and videos…</p></div></section>' +
+      '<section class="drawer-section site-notes-section"><div class="drawer-section-head"><h3>Site notes</h3><span>Shared parcel log</span></div><div id="field-notes"><p class="media-loading">Loading site notes…</p></div></section>' +
       '<section class="drawer-section"><div class="drawer-section-head"><h3>GPS site photograph from PDF</h3><span>PDF row ' + String(p.id).padStart(3,"0") + '</span></div><img class="source-photo" src="' + escapeHtml(p.photo) + '" alt="Source GPS photo for ' + escapeHtml(p.village) + '"></section>' +
       '<section class="drawer-section"><div class="drawer-section-head"><h3>Source row</h3><span>page ' + p.page + ' of 8</span></div><img class="source-row-image" src="' + escapeHtml(p.sourceRow) + '" alt="Original source row for parcel ' + p.id + ' on page ' + p.page + '"><p class="source-caption">The source row retains the Kannada locality spelling and the full remarks printed in the PDF.</p><a class="drawer-source-link" href="./source/land-details-20-11-2026.pdf#page=' + p.page + '" target="_blank" rel="noreferrer">Open this page in the source PDF</a></section>' +
       '</div>';
@@ -265,6 +324,7 @@
     document.body.style.overflow = "hidden";
     $("#close-drawer").focus();
     loadParcelMedia(p.id);
+    loadParcelNotes(p.id);
   }
   function closeDrawer() {
     $("#parcel-drawer").classList.remove("open");
@@ -313,6 +373,11 @@
     bindEvents();
     fetch("./data/parcels.json").then(function (response) { if (!response.ok) throw new Error("Could not load parcel data"); return response.json(); }).then(function (data) {
       state.data = data; state.parcels = data.parcels; fillFilters(); renderSummary(); renderRows();
+      var requestedParcel = Number(new URLSearchParams(window.location.search).get("parcel"));
+      if (Number.isInteger(requestedParcel) && state.parcels.some(function (parcel) { return parcel.id === requestedParcel; })) {
+        setPage("parcels");
+        openParcel(requestedParcel);
+      }
     }).catch(function () {
       $("#parcel-count").textContent = "Unavailable";
       $("#result-count").textContent = "Parcel data could not be loaded";
