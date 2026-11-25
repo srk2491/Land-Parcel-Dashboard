@@ -198,6 +198,7 @@
   }
   function renderParcelNotes(parcelId, items, access) {
     if (!state.selected || state.selected.id !== parcelId) return;
+    var media = window.LandParcelMedia;
     items = Array.isArray(items) ? items : [];
     access = access || {};
     var notes = items.map(function (item) {
